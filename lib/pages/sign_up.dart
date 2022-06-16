@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -18,6 +19,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
       home: Scaffold(
         backgroundColor: Colors.black,
         body: Container(
+          margin: const EdgeInsets.all(15.0),
           child: Align(
             alignment: Alignment.center,
             child:
@@ -25,9 +27,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
               Material(
                 color: Colors.transparent,
                 child: InkWell(
+                  splashColor: buttonInkColor,
                   onTap: () {},
                   child: Container(
-                    width: 350,
                     decoration: const BoxDecoration(
                         border: Border(
                       top: BorderSide(
@@ -43,16 +45,42 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: Container(
                         margin: const EdgeInsets.all(15.0),
                         child: const Text(
-                          'Sign up',
+                          'Sign in',
                           style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 24,
+                              color: buttonTextColor,
+                              letterSpacing: letterSpacing,
+                              fontSize: fontSize,
                               fontWeight: buttonFontWeight),
                         ),
                       ),
                     ),
                   ),
                 ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(top: 15.0),
+                child: RichText(
+                    text: TextSpan(
+                  children: [
+                    TextSpan(
+                      text: 'You are not registered yet?',
+                      style: TextStyle(
+                          color: Colors.white.withOpacity(0.9),
+                          letterSpacing: letterSpacing,
+                          fontSize: 18,
+                          fontWeight: buttonFontWeight),
+                    ),
+                    TextSpan(
+                      text: ' Register!',
+                      style: const TextStyle(
+                          color: buttonTextColor,
+                          letterSpacing: letterSpacing,
+                          fontSize: 18,
+                          fontWeight: buttonFontWeight),
+                      recognizer: TapGestureRecognizer()..onTap = () {},
+                    )
+                  ],
+                )),
               ),
             ]),
           ),
